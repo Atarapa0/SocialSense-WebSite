@@ -202,6 +202,7 @@ nav {
     margin-top: 15px;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: all 0.3s ease;
     z-index: 1000;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
@@ -210,16 +211,17 @@ nav {
 .dropdown-menu::before {
     content: '';
     position: absolute;
-    top: -10px;
+    top: -15px;
     left: 0;
     right: 0;
-    height: 15px;
+    height: 20px;
 }
 
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     margin-top: 10px;
+    pointer-events: auto;
 }
 
 .dropdown-item {
