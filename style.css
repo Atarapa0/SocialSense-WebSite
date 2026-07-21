@@ -415,9 +415,22 @@ nav {
 
 .legal-content h1 {
     font-size: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 14px;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
+}
+
+.legal-content .legal-updated {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 28px;
+    padding: 7px 12px;
+    border: 1px solid rgba(139, 92, 246, 0.28);
+    border-radius: 999px;
+    background: rgba(139, 92, 246, 0.1);
+    color: #c4b5fd;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .legal-content h2 {
@@ -429,6 +442,22 @@ nav {
 .legal-content p {
     color: var(--text-muted);
     margin-bottom: 16px;
+}
+
+.legal-content a {
+    color: #c4b5fd;
+    text-decoration-color: rgba(196, 181, 253, 0.45);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.legal-content a:hover {
+    color: white;
+    text-decoration-color: white;
+}
+
+.legal-content strong {
+    color: #e4e4e7;
 }
 
 .legal-content ul {
