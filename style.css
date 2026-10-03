@@ -522,6 +522,30 @@ footer {
     font-size: 14px;
 }
 
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.footer-legal a {
+    color: var(--text-muted);
+    text-underline-offset: 3px;
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+.footer-disclaimer {
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
     .container {

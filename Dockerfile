@@ -4,8 +4,10 @@ FROM nginx:alpine
 # Nginx varsayılan yapılandırmasını kaldır
 RUN rm -rf /usr/share/nginx/html/*
 
-# Statik dosyaları kopyala
-COPY . /usr/share/nginx/html/
+# Yalnızca yayınlanacak statik dosyaları web köküne kopyala
+COPY *.html style.css app-ads.txt /usr/share/nginx/html/
+COPY tr/ /usr/share/nginx/html/tr/
+COPY assets/ /usr/share/nginx/html/assets/
 
 # Özel nginx yapılandırmasını kopyala
 COPY nginx.conf /etc/nginx/conf.d/default.conf
