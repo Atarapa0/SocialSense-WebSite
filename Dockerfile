@@ -5,7 +5,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Yalnızca yayınlanacak statik dosyaları web köküne kopyala
-COPY *.html style.css app-ads.txt /usr/share/nginx/html/
+COPY *.html style.css /usr/share/nginx/html/
 COPY tr/ /usr/share/nginx/html/tr/
 COPY assets/ /usr/share/nginx/html/assets/
 
