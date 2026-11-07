@@ -67,6 +67,13 @@ body {
     box-shadow: 0 8px 30px var(--primary-glow);
 }
 
+.btn.is-disabled,
+.dropdown-item.is-disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
 .btn-outline {
     background: transparent;
     border: 1px solid var(--border);
@@ -304,6 +311,7 @@ nav {
 
 .store-buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     margin-bottom: 60px;
