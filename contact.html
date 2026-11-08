@@ -42,18 +42,45 @@
         <div class="container">
             <div class="legal-content">
                 <h1>Contact Us</h1>
-                <p>For questions or support, contact the developer, Furkan Erdoğan, by email using the link below.</p>
+                <p>For questions or support, send a message to the developer, Furkan Erdoğan, using the form below.</p>
 
-                <div style="margin-top: 40px;">
-                    <div class="feature-card" style="text-align: center;">
-                        <div class="feature-icon" style="margin: 0 auto 20px;">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email Support</h3>
-                        <p style="margin: 10px 0 20px;">For general inquiries and technical support.</p>
-                        <a href="mailto:info@furkanerdogan.com" class="btn btn-primary">info@furkanerdogan.com</a>
+                <form class="contact-form" data-endpoint="https://contact.furkanerdogan.com/v1/contact/socialsense" data-lang="en" novalidate>
+                    <div class="cf-field">
+                        <label for="cf-name">Name <span class="cf-optional">(optional)</span></label>
+                        <input id="cf-name" type="text" name="name" maxlength="100" autocomplete="name">
                     </div>
-                </div>
+
+                    <div class="cf-field">
+                        <label for="cf-email">Email</label>
+                        <input id="cf-email" type="email" name="email" maxlength="254" autocomplete="email" required>
+                    </div>
+
+                    <div class="cf-field">
+                        <label for="cf-topic">Topic</label>
+                        <select id="cf-topic" name="topic">
+                            <option value="general">General question</option>
+                            <option value="feedback">Feedback / bug report</option>
+                            <option value="kvkk">Data protection (KVKK) request</option>
+                        </select>
+                    </div>
+
+                    <div class="cf-field">
+                        <label for="cf-message">Message</label>
+                        <textarea id="cf-message" name="message" rows="6" minlength="10" maxlength="5000" required></textarea>
+                    </div>
+
+                    <div class="cf-hp" aria-hidden="true">
+                        <label for="cf-website">Website</label>
+                        <input id="cf-website" type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <p class="cf-note">Your personal data is processed to answer your request, as described in the <a href="/tr/kvkk">KVKK Privacy Notice (Turkish)</a>.</p>
+
+                    <button type="submit" class="btn btn-primary cf-submit">Send message</button>
+                    <p class="cf-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <p class="cf-alt">Or email directly: <a href="mailto:info@furkanerdogan.com">info@furkanerdogan.com</a></p>
 
                 <p>Please do not email your password or sensitive Instagram archives. For information about support
                     communications, see the <a href="privacy.html">Privacy Policy</a>.</p>
@@ -106,6 +133,7 @@
             }
         });
     </script>
+    <script src="/assets/contact-form.js?v=1" defer></script>
 </body>
 
 </html>

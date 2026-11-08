@@ -515,6 +515,109 @@ nav {
     border-bottom: none;
 }
 
+/* Contact Form */
+.contact-form {
+    position: relative;
+    margin: 32px 0 24px;
+}
+
+.cf-field {
+    margin-bottom: 20px;
+}
+
+.cf-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e4e4e7;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cf-optional {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.cf-field input,
+.cf-field select,
+.cf-field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 16px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cf-field textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.cf-field select option {
+    background: #18181b;
+    color: var(--text-main);
+}
+
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-card-hover);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.cf-hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.legal-content .cf-note {
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.cf-submit {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cf-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+.legal-content .cf-status {
+    margin: 16px 0 0;
+    font-size: 14px;
+}
+
+.legal-content .cf-status:empty {
+    display: none;
+}
+
+.legal-content .cf-status[data-state="error"] {
+    color: #f87171;
+}
+
+.legal-content .cf-status[data-state="ok"] {
+    color: #4ade80;
+}
+
+@media (max-width: 768px) {
+    .cf-submit {
+        width: 100%;
+    }
+}
+
 /* Footer */
 footer {
     border-top: 1px solid var(--border);
