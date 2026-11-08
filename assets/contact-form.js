@@ -9,6 +9,7 @@
       message: "Mesaj en az 10, en fazla 5000 karakter olmalı.",
       name: "Ad en fazla 100 karakter olabilir.",
       topic: "Lütfen bir konu seçin.",
+      topic_other: "Lütfen konunuzu yazın (en fazla 100 karakter).",
       rate_limited: "Kısa sürede çok fazla mesaj gönderildi. Lütfen biraz sonra tekrar deneyin.",
       generic: "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya info@furkanerdogan.com adresine yazın."
     },
@@ -19,6 +20,7 @@
       message: "The message must be between 10 and 5000 characters.",
       name: "The name can be at most 100 characters.",
       topic: "Please choose a topic.",
+      topic_other: "Please enter your topic (at most 100 characters).",
       rate_limited: "Too many messages in a short time. Please try again a bit later.",
       generic: "The message could not be sent. Please try again later or write to info@furkanerdogan.com."
     }
@@ -36,14 +38,29 @@
     // form.name formun kendi "name" özelliğidir; alanlara her zaman elements üzerinden eriş.
     var f = form.elements;
 
+    // "Diğer" seçilince kullanıcının konuyu kendisinin yazacağı alanı göster.
+    var otherWrap = form.querySelector(".cf-other");
+    function syncOther() {
+      var on = f["topic"].value === "other";
+      otherWrap.hidden = !on;
+      f["topic_other"].required = on;
+    }
+    f["topic"].addEventListener("change", syncOther);
+
     var wanted = new URLSearchParams(location.search).get("topic");
     if (wanted && f["topic"].querySelector('option[value="' + CSS.escape(wanted) + '"]')) {
       f["topic"].value = wanted;
     }
+    syncOther();
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!f["email"].checkValidity()) { setStatus(status, "error", t.email); return; }
+      if (!f["topic"].value) { setStatus(status, "error", t.topic); return; }
+      var topicOther = f["topic"].value === "other" ? f["topic_other"].value.trim() : "";
+      if (f["topic"].value === "other" && (!topicOther || topicOther.length > 100)) {
+        setStatus(status, "error", t.topic_other); return;
+      }
       var msg = f["message"].value.trim();
       if (msg.length < 10 || msg.length > 5000) { setStatus(status, "error", t.message); return; }
 
@@ -51,6 +68,7 @@
         name: f["name"].value.trim(),
         email: f["email"].value.trim(),
         topic: f["topic"].value,
+        topic_other: topicOther,
         message: msg,
         lang: form.dataset.lang || "tr",
         website: f["website"].value
@@ -68,6 +86,7 @@
           return res.json().catch(function () { return {}; }).then(function (data) {
             if (res.ok && data.ok) {
               form.reset();
+              syncOther();
               setStatus(status, "ok", t.ok);
             } else if (data.error === "invalid_field" && t[data.field]) {
               setStatus(status, "error", t[data.field]);

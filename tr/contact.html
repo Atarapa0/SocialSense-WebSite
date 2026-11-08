@@ -57,11 +57,20 @@
 
                     <div class="cf-field">
                         <label for="cf-topic">Konu</label>
-                        <select id="cf-topic" name="topic">
-                            <option value="general">Genel soru</option>
-                            <option value="feedback">Öneri / hata bildirimi</option>
+                        <select id="cf-topic" name="topic" required>
+                            <option value="" disabled selected>Konu seçin</option>
+                            <option value="bug">Hata bildirimi</option>
+                            <option value="feedback">Geri bildirim</option>
+                            <option value="suggestion">Öneri</option>
+                            <option value="complaint">Şikayet</option>
                             <option value="kvkk">KVKK başvurusu / veri talebi</option>
+                            <option value="other">Diğer</option>
                         </select>
+                    </div>
+
+                    <div class="cf-field cf-other" hidden>
+                        <label for="cf-topic-other">Konunuz</label>
+                        <input id="cf-topic-other" type="text" name="topic_other" maxlength="100">
                     </div>
 
                     <div class="cf-field">
@@ -133,7 +142,7 @@
             }
         });
     </script>
-    <script src="/assets/contact-form.js?v=1" defer></script>
+    <script src="/assets/contact-form.js?v=2" defer></script>
 </body>
 
 </html>
